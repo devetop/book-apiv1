@@ -17,7 +17,7 @@ Detail Spesifikasi:
 * 1 vCPU
 * 60 GiB SSD
 
-Instance terpasang IP Private 172.26.14.19 dan IP Public 52.221.231.128
+Instance terpasang IP Private 172.26.9.0 dan IP Public 18.143.147.247
 
 Instalasi:
 
@@ -45,17 +45,17 @@ nano src/server.js
 Lalu edit file server.js
 ```plaintext
 const Hapi = require('@hapi/hapi');
- 
+
 const init = async () => {
     const server = Hapi.server({
-        port: 5000,
-        host: 'localhost',
+        port: 9000,
+        host: '0.0.0.0',
     });
- 
+
     await server.start();
     console.log(`Server berjalan pada ${server.info.uri}`);
 }
- 
+
 init()
 ```
 
@@ -76,6 +76,9 @@ Edit file package.json menjadi seperti berikut
   "license": "ISC"
 }
 ```
+
+Pastikan port 9000 sudah ditambahkan ke list firewall
+![](https://imgur.com/gzLCLwO.png)
 
 Test web server
 ```sh
